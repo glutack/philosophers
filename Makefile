@@ -1,6 +1,6 @@
 #-------- philosophers --------#
 NAME	=	philo
-SRC		=	finish.c init.c main.c print.c routines.c utils.c
+SRC		=	./src/init.c ./src/main.c ./src/print.c ./src/routines.c ./src/utils.c
 OBJ		=	$(SRC:.c=.o)
 
 #---------- other ----------#
