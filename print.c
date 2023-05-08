@@ -6,7 +6,7 @@
 /*   By: irmoreno <irmoreno@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:33:10 by irmoreno          #+#    #+#             */
-/*   Updated: 2023/05/08 22:25:55 by irmoreno         ###   ########.fr       */
+/*   Updated: 2023/05/08 23:22:08 by irmoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ void	ft_actions(t_philo *philo, int status, char *action)
 		return ;
 	}
 	if (status == 2)
-		printf("%ld %d %s %d\n", (ft_get_time() - philo->tools->tstart),
+		printf("%ldms %d %s %d\n", (ft_get_time() - philo->tools->tstart),
 			philo->id + 1, "has taken fork", philo->fork[0]);
 	else if (status == 3)
-		printf("%ld %d %s %d\n", (ft_get_time() - philo->tools->tstart),
+		printf("%ldms %d %s %d\n", (ft_get_time() - philo->tools->tstart),
 			philo->id + 1, "has taken fork", philo->fork[1]);
 	else
-		printf("%ld %d %s\n", (ft_get_time() - philo->tools->tstart),
+		printf("%ldms %d %s\n", (ft_get_time() - philo->tools->tstart),
 			philo->id + 1, action);
 	pthread_mutex_unlock(&philo->tools->actions_mutex);
 }

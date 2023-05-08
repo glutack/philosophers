@@ -53,7 +53,7 @@ static int	ft_kill_philo(t_philo *philo)
 		philo->tools->routine_status = 0;
 		pthread_mutex_unlock(&philo->tools->routine_status_mutex);
 		pthread_mutex_lock(&philo->tools->actions_mutex);
-		printf("%ld %d %s\n", (ft_get_time() - philo->tools->tstart),
+		printf("%ldms %d %s\n", (ft_get_time() - philo->tools->tstart),
 			philo->id + 1, "has died");
 		pthread_mutex_unlock(&philo->tools->actions_mutex);
 		pthread_mutex_unlock(&philo->meal_mutex);
