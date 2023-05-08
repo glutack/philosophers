@@ -12,6 +12,9 @@
 
 #include "philo.h"
 
+/*	Joins all philosophers threads and philo_father so they wait for eachother
+	until philo_father checks that routine_status is 0. Then it destroys the
+	mutexes we created before and calls FT_CLEAN_TABLE */
 static void	ft_finish_lunch(t_program *tools)
 {
 	unsigned int	i;
@@ -36,6 +39,9 @@ static void	ft_finish_lunch(t_program *tools)
 	ft_clean_table(tools);
 }
 
+/*	Checks if a philosopher must die and kills it if needed. It gets the actual
+	time - the last time he ate and if is > than the time to die given,
+	routine_status is deactivated so it finishes */
 static int	ft_kill_philo(t_philo *philo)
 {
 	time_t	time;
@@ -56,6 +62,11 @@ static int	ft_kill_philo(t_philo *philo)
 	return (0);
 }
 
+/*	First it checks FT_KILL_PHILO, then checks how many times the philo has eaten
+	if a number of meals has been stated. Status is declared as active but if
+	philo < meals status will be declared as 0 as the number of meals declared
+	hasn't been completed and it'll	return 0. If it's completed, routine_status will
+	be deactivated and routine will	end*/
 static int	ft_meals_eaten(t_program *tools)
 {
 	unsigned int	i;
@@ -84,6 +95,9 @@ static int	ft_meals_eaten(t_program *tools)
 	return (0);
 }
 
+/*	Philo father declares the routine_status as active and he will continuously
+	check if the philosophers are still alive and if they've eaten. It calls 
+	FT_ROUTINE_DELAY and FT_MEALS_EATEN */
 void	*ft_philo_father(void *data)
 {
 	t_program	*tools;
@@ -94,7 +108,7 @@ void	*ft_philo_father(void *data)
 	pthread_mutex_lock(&tools->routine_status_mutex);
 	tools->routine_status = 1;
 	pthread_mutex_unlock(&tools->routine_status_mutex);
-	ft_routine_delay(tools->tstart); //no
+	ft_routine_delay(tools->tstart);
 	while (1)
 	{
 		if (ft_meals_eaten(tools) == 1)
@@ -106,8 +120,9 @@ void	*ft_philo_father(void *data)
 	return (NULL);
 }
 
-/*	*/
-
+/*	Declares main t_program, checks if the number of arguments received is
+	correct, calls FT_CHECK_ARG, FT_INIT_TOOLS, FT_INIT_LUNCH and
+	FT_FINISH_LUNCH*/
 int	main(int argc, char **argv)
 {
 	t_program	*tools;

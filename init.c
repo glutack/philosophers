@@ -6,12 +6,14 @@
 /*   By: irmoreno <irmoreno@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 21:53:59 by irmoreno          #+#    #+#             */
-/*   Updated: 2023/05/08 14:51:41 by irmoreno         ###   ########.fr       */
+/*   Updated: 2023/05/08 21:49:17 by irmoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/*	Gets starting time, creates a thread for every calling FT_PHILO_ROUTINE, 
+	then creates the philo father by calling FT_PHILO_FATHER*/
 int	ft_init_lunch(t_program *tools)
 {
 	unsigned int	i;
@@ -36,6 +38,7 @@ creation\n", 0));
 	return (1);
 }
 
+/*	Initializes and allocates forks mutexes */
 pthread_mutex_t	*ft_init_forks(t_program *tools)
 {
 	pthread_mutex_t	*forks;
@@ -69,7 +72,8 @@ static void	ft_allocate_forks(t_philo *philo)
 	}
 }
 
-/*	Allocates memory and initializes philosophers */
+/*	Allocates memory and initializes philosophers and their meal_mutex. Calls
+	FT_ALLOCATE_FORKS */
 static t_philo	**ft_init_philos(t_program *tools)
 {
 	t_philo			**philos;
@@ -98,7 +102,8 @@ creation\n", NULL));
 	return (philos);
 }
 
-/*	Initializes the program that contains the parameters received. */
+/*	Initializes the program that contains the parameters received, makes them
+	all int. Calls FT_INIT_PHILOS and FT_INIT_FORKS */
 t_program	*ft_init_tools(t_program *tools, int argc, char **argv)
 {
 	tools = malloc(sizeof(t_program) * 1);

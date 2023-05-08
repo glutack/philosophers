@@ -6,12 +6,13 @@
 /*   By: irmoreno <irmoreno@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:33:10 by irmoreno          #+#    #+#             */
-/*   Updated: 2023/05/08 15:55:17 by irmoreno         ###   ########.fr       */
+/*   Updated: 2023/05/08 22:25:55 by irmoreno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/*	Frees all memory allocated */
 void	*ft_clean_table(t_program *tools)
 {
 	unsigned int	i;

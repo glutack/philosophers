@@ -21,7 +21,7 @@ void	ft_philo_usleep(t_program *tools, time_t tsleep)
 	{
 		if (!ft_routine_status(tools))
 			break ;
-		usleep(100);//no
+		usleep(100);
 	}
 }
 
@@ -48,6 +48,8 @@ time_t	ft_get_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
+/*	Checks if all parameters received are int and if there are enough
+	philosophers*/
 int	ft_check_arg(int argc, char **argv)
 {
 	int	i;
